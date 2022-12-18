@@ -78,13 +78,6 @@
   hitori # sudoku game
   atomix # puzzle game
   ]);
-
-
-
-
-
-
-
   # Configure keymap in X11
   services.xserver = {
     layout = "us";
@@ -162,5 +155,19 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "22.11"; # Did you read the comment?
-
+  # Neovim Configuration
+  programs.neovim = {
+    enable = true;
+    viAlias = true;
+    vimAlias = true;
+    configure = {
+      packages.nix = with pkgs.vimPlugins; {
+        start = [
+          vim-nix # nix highlight
+          nerdtree # file structure inside nvim
+        ];
+        opt = [];
+      };
+    };
+  };
 }
