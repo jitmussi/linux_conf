@@ -86,7 +86,8 @@
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
-
+  # Enable Xbox Controller Driver
+  hardware.xone.enable = true;
   # Enable sound with pipewire.
   sound.enable = true;
   hardware.pulseaudio.enable = false;
@@ -114,7 +115,8 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       firefox
-    #  thunderbird
+      discord
+      steam
     ];
   };
 
@@ -126,7 +128,8 @@
   environment.systemPackages = with pkgs; [
   git
   neovim 
-  pkgs.gnomeExtensions.pop-shell
+  pkgs.gnomeExtensions.pop-shell # Tiling Shell
+  linuxKernel.packages.linux_zen.xone # Xbox One Wireless Dongle Driver
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -165,9 +168,16 @@
         start = [
           vim-nix # nix highlight
           nerdtree # file structure inside nvim
+          catppuccin-nvim  
         ];
         opt = [];
       };
     };
   };
+  # Steam Configuration
+  programs.steam = {
+  enable = true;
+  remotePlay.openFirewall = true; # Open ports in the firewall for Steam Remote Play
+  dedicatedServer.openFirewall = true; # Open ports in the firewall for Source Dedicated Server
+};
 }
