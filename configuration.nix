@@ -60,6 +60,7 @@
   [ 
   gnome-photos
   gnome-tour
+  gnome-text-editor
   ]) ++ (with pkgs.gnome; 
   [
   cheese # webcam tool
@@ -117,6 +118,7 @@
       firefox
       discord
       steam
+      helix
     ];
   };
 
@@ -127,6 +129,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
   git
+  gh
   neovim 
   pkgs.gnomeExtensions.pop-shell # Tiling Shell
   linuxKernel.packages.linux_zen.xone # Xbox One Wireless Dongle Driver
@@ -167,8 +170,6 @@
       packages.nix = with pkgs.vimPlugins; {
         start = [
           vim-nix # nix highlight
-          nerdtree # file structure inside nvim
-          catppuccin-nvim  
         ];
         opt = [];
       };
