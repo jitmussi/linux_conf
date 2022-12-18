@@ -86,7 +86,7 @@
   };
 
   # Enable CUPS to print documents.
-  services.printing.enable = true;
+  # services.printing.enable = true;
   # Enable Xbox Controller Driver
   hardware.xone.enable = true;
   # Enable sound with pipewire.
